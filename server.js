@@ -25,7 +25,7 @@ const logger = pino({
   }
 });
 
-if(process.env.DISABLE_PROFILER) {
+/*if(process.env.DISABLE_PROFILER) {
   logger.info("Profiler disabled.")
 }
 else {
@@ -37,6 +37,8 @@ else {
     }
   });
 }
+*/
+logger.info("Google Cloud Profiler disabled.");
 
 // Register GRPC OTel Instrumentation for trace propagation
 // regardless of whether tracing is emitted.
