@@ -16,10 +16,16 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
         }
         stage('destination unstash') {
             container('buildkit') {
-                sh '''
-                    ls -la 
-                    ls -la /
-                '''
+                sh """
+                    buildctl --addr tcp://buildkitd.devops-tools.svc.cluster.local:1234\
+                    --tlscacert /certs/ca.pem\
+                    --tlscert /certs/cert.pem\
+                    --tlskey /certs/key.pem\
+                    build --frontend dockerfile.v0\
+                    --opt filename=Dockerfile --local context=.\
+                    --local dockerfile=.\
+                    --output type=image,name=134448505602.dkr.ecr.ap-south-1.amazonaws.com/msdemo-currencyservice,push=true
+                """
             }
         }
     }
