@@ -8,6 +8,9 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
                 sh '''
                     pwd
                     ls -la
+                    npm install --only=production
+                    ls -ls
+                    sleep 5
                 '''
             }
         }
