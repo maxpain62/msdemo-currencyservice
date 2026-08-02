@@ -6,11 +6,8 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
         stage('build') {
             container('node-build') {
                 sh '''
-                npm install --only=production
-                pwd 
-                sleep 60s
-                ls -la
-                sleep 60s
+                    pwd
+                    ls -la
                 '''
             }
         }
