@@ -28,4 +28,4 @@ COPY . .
 
 EXPOSE 7000
 
-ENTRYPOINT [ "sleep", "3600" ]
+ENTRYPOINT [ "node", "server.js" ]
