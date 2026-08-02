@@ -20,10 +20,12 @@
 
 FROM 134448505602.dkr.ecr.ap-south-1.amazonaws.com/msdemo-currencyservice-build:latest
 
-
+RUN ls -la
 RUN apk add --no-cache nodejs
 
 WORKDIR /usr/src/app
+
+RUN ls -la
 
 COPY ./node_modules /node_modules
 COPY . .
