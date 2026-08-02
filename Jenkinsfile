@@ -11,17 +11,14 @@ podTemplate(yaml: readTrusted('pod.yaml')) {
                     npm install --only=production
                     ls -ls
                     sleep 5
-                    stash name: 'node_modules', includes: 'node_modules/**'
                 '''
             }
         }
         stage('destination unstash') {
             container('buildkit') {
-                unstash 'node_modules'
                 sh '''
-                    pwd
-                    ls -la
-                    sleep 5
+                    ls -la 
+                    ls -la /
                 '''
             }
         }
