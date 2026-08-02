@@ -27,6 +27,7 @@ WORKDIR /app
 
 RUN ls -la
 
+COPY ./node_modules /node_modules
 COPY . .
 
 EXPOSE 7000
