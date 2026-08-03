@@ -18,8 +18,8 @@ spec:
         - name: msdemo-currencyservice
           image: 134448505602.dkr.ecr.ap-south-1.amazonaws.com/msdemo-currencyservice:latest
           ports:
-            containerPort: 7000
-            protocol: TCP
+            - containerPort: 7000
+              protocol: TCP
           env:
             - name: PORT
               value: "7000"
