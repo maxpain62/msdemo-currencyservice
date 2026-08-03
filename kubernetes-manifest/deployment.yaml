@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: msdemo-currencyservice-deployment
+  labels:
+    app: msdemo-currencyservice
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: msdemo-currencyservice
+  template:
+    metadata:
+      labels:
+        app: msdemo-currencyservice
+    spec:
+      containers:
+        - name: msdemo-currencyservice
+          image: 134448505602.dkr.ecr.ap-south-1.amazonaws.com/msdemo-currencyservice:latest
+          ports:
+            containerPort: 7000
+            protocol: TCP
+          env:
+            - name: PORT
+              value: "7000"
+            - name: DISABLE_PROFILER
+              value: "1"
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "100m"
+            limits:
+              memory: "128Mi"
+              cpu: "200m"
+          livenessProbe:
+            grpc:
+              port: 7000
+          readinessProbe:
+            grpc:
+              port: 7000
